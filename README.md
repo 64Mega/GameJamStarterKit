@@ -3,12 +3,12 @@
 This is just a minimal quick-start boilerplate repo intended for personal use in game jams.
 
 Functionality includes:
- > Simple Asset preloader
- > Included bitmap font and basic function to draw text with it
- > Several utility functions for drawing
- > Automatic canvas sizing/positioning
- > Simple Update/Render gameloop with timing
- > Enough comments to get acquainted with the project
+ - Simple Asset preloader
+ - Included bitmap font and basic function to draw text with it
+ - Several utility functions for drawing
+ - Automatic canvas sizing/positioning
+ - Simple Update/Render gameloop with timing
+ - Enough comments to get acquainted with the project
 
 Depends on TypeScript and Webpack.
 
