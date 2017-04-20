@@ -1,0 +1,15 @@
+{
+  "name": "game-jam-starter-kit",
+  "author": "Daniel '64Mega' Lawrence",
+  "version": "0.0.1",
+  "scripts": {
+    "prepublish": "typings install",
+    "watch": "webpack --watch"
+  },
+  "dependencies": {
+    "typescript": "^2.0.0",
+    "ts-loader": "^2.0.3",
+    "typings": "^2.1.1",
+    "webpack": "^2.2.1"
+  }
+}
