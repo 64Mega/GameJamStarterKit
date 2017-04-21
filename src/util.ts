@@ -29,6 +29,9 @@ export function canvas_init(width: number, height: number) {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         context.scale(scale,scale);
         context.imageSmoothingEnabled = false;
+        context.mozImageSmoothingEnabled = false;
+        context.webkitImageSmoothingEnabled = false;
+        context.msImageSmoothingEnabled = false;
         context_width = width;
         context_height = height;
         context.lineWidth = 1.0;

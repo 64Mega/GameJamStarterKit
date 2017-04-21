@@ -1,8 +1,9 @@
 // 64Mega's Game Jam Quick-Start Kit
 // See Readme.md or https://github.com/64Mega/GameJamStarterKit
 
-import util = require("./util");
-import assets = require("./assets");
+import * as util from "./util";
+import * as assets from "./assets";
+import * as audio from "./audio";
 
 let time = Date.now();
 let time_last = Date.now();
@@ -131,8 +132,9 @@ function main() {
 }
 
 function loadAssets() {
-    // Load some system-required images, fonts specifically.
-    assets.image_load("font/main", "data/spr_font1.png");
+    // Load some system-required assets
+    assets.image_load("font/main", "data/images/spr_font1.png");
+    assets.sound_load("snd/default", "data/sounds/select_default.wav");
 
     // Load rest of resources here
 }
