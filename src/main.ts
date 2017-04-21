@@ -4,6 +4,7 @@
 import * as util from "./util";
 import * as assets from "./assets";
 import * as audio from "./audio";
+import * as input from "./input";
 
 let time = Date.now();
 let time_last = Date.now();
@@ -126,6 +127,7 @@ function main() {
     util.canvas_init(320, 200);
 
     loadAssets();
+    input.init();
 
     // Start game loop
     requestAnimationFrame(game_loop);

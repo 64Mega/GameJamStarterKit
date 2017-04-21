@@ -19,7 +19,8 @@ export function play_music(alias : string) {
 
 export function stop_sound(alias : string) {
     let sound = assets.sound_get(alias);
-    if(sound.is_ready) {
-        sound.stop();
+    if(sound.is_ready && sound.paused === false) {
+        sound.pause();
+        sound.currentTime = 0;
     }
 }
