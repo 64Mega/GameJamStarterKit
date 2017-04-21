@@ -110,7 +110,7 @@ function keydown_handler(key_event) {
         keys[key_event.keyCode] = 0;
     }
     if(keys[key_event.keyCode] === 0) { keys[key_event.keyCode] = 1 }
-    key_event.preventDefault();
+    if(key_event.keyCode !== KEY.F11) { key_event.preventDefault(); }
 }
 
 function keyup_handler(key_event) {
