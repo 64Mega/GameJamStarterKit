@@ -1,8 +1,42 @@
-// Basic input handling
-
+// Input helper
 let keys = {};
+let Input = {};
 
-export const KEY = {
+let handlers_set = false;
+function keydown_handler(key_event) {
+    if(keys[key_event.keyCode] === undefined) {
+        keys[key_event.keyCode] = 0;
+    }
+    if(keys[key_event.keyCode] === 0) {keys[key_event.keyCode] = 1};
+    if(key_event.keyCode !== Input.KEYS.F11 && key_event.keyCode !== Input.KEYS.F5) {
+        key_event.preventDefault();
+    }
+}
+
+function keyup_handler(key_event) {
+    keys[key_event.keyCode] = 0;
+    key_event.preventDefault();
+}
+
+Input.key_pressed = function(keyCode) {
+    if(keys[keyCode] === 1) {        
+        keys[keyCode] = 2;
+        return true;
+    }
+    
+    return false;
+}
+
+Input.key_held = function(keyCode) {
+    return keys[keyCode] > 0 && keys[keyCode] !== undefined;
+}
+
+Input.init = function() {
+    document.addEventListener("keydown", keydown_handler, false);
+    document.addEventListener("keyup", keyup_handler, false);
+}
+
+Input.KEYS = {
     "BACKSPACE" : 8,
     "TAB": 9,
     "ENTER": 13,
@@ -105,32 +139,4 @@ export const KEY = {
     "QUOTE": 222
 };
 
-function keydown_handler(key_event) {
-    if(keys[key_event.keyCode] === undefined) {
-        keys[key_event.keyCode] = 0;
-    }
-    if(keys[key_event.keyCode] === 0) { keys[key_event.keyCode] = 1 }
-    if(key_event.keyCode !== KEY.F11) { key_event.preventDefault(); }
-}
-
-function keyup_handler(key_event) {
-    keys[key_event.keyCode] = 0;
-    key_event.preventDefault();
-}
-
-export function init() {
-    document.addEventListener("keydown", keydown_handler, false);
-    document.addEventListener("keyup", keyup_handler, false);
-}
-
-export function key_pressed(keyCode : number) {
-    if(keys[keyCode] === 1) {
-        keys[keyCode] = 2;
-        return true;
-    }
-    return false;
-}
-
-export function key_held(keyCode : number) {
-    return keys[keyCode] > 0;
-}
+export default Input;

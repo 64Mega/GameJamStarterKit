@@ -1,15 +1,27 @@
 {
   "name": "game-jam-starter-kit",
-  "author": "Daniel '64Mega' Lawrence",
-  "version": "0.0.1",
+  "author": "Daniel Lawrence (daniel.rewired@gmail.com)",
+  "version": "0.0.2",
   "scripts": {
-    "prepublish": "typings install",
-    "watch": "webpack --watch"
+    "start": "gulp watch"
   },
-  "dependencies": {
-    "typescript": "^2.0.0",
-    "ts-loader": "^2.0.3",
-    "typings": "^2.1.1",
-    "webpack": "^2.2.1"
+  "devDependencies": {
+    "beepbeep": "^1.2.1",
+    "browser-sync": "^2.18.13",
+    "chalk": "^2.3.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-babel-minify": "^0.2.0",
+    "gulp-bump": "^2.8.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-series": "^1.0.2",
+    "gulp-typescript": "^3.2.3",
+    "gulp-watch": "^4.3.11",
+    "gulp-zip": "^4.0.0",
+    "mkdirp": "^0.5.1",
+    "typescript": "^2.6.2",
+    "webpack-stream": "^4.0.0"
   }
 }

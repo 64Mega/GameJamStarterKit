@@ -1,6 +1,6 @@
 # Game Jam Quick-Start Kit
 
-This is just a minimal quick-start boilerplate repo intended for personal use in game jams.
+This is a minimal quick-start boilerplate for game jams and prototyping.
 
 Functionality includes:
  - Simple Asset preloader (Images and Sounds)
@@ -12,10 +12,15 @@ Functionality includes:
  - Basic Keyboard Input handler
  - Enough comments to get acquainted with the project
 
-Depends on TypeScript and Webpack.
+## Setup
+Clone the git repository and run either `yarn install` or `npm install` in the project base directory to download dependencies.
 
-To use the project, clone the repo and run `npm install` within the project directory.
-When that's done, do `npm run watch`. 
+## Running the test environment
+To run your game in the browser, run `npm start` in the root project directory.
 
-I recommend browser-sync for a less tedious development experience.
-Run it as a server in the _dist_ directory.  
+## Building the final game
+Run `gulp build` in the root directory to output a zip containing an index.html, bundle.js and the assets you included in your game.
+
+## Notes
+This boilerplate currently relies on Gulp 4, and the dependency is pulled from Github. This may break in the future, so beware.
+
