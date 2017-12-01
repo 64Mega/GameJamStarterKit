@@ -10,6 +10,8 @@ import Sprite from "./helpers/sprite";
 import Assets from "./helpers/assets";
 import Input from "./helpers/input";
 import {scaleContext} from "./helpers/util";
+import {Vec2, DistanceCheck, CollisionBox, Box, CollideAgainst} from "./helpers/math";
+import {Interpolate} from "./helpers/math";
 import "./loadassets";
 
 Global.canvas = new Canvas(800,600,"2d");
@@ -25,17 +27,22 @@ Input.init();
 
 // Wait for assets to finish loading then start doing initialization that relies on resources
 Assets.onfinished = () => {
-    let mytext = new Text("spr_font1", 5, 8);
-    let y = 0;
-    function update(deltatime) {
-        draw.clear("");    
-        mytext.draw_centered_horizontal(y,"Game Jam Boilerplate 2.0");
-    
-        if(Input.key_held(Input.KEYS.DOWN)) {
-            y++;
+    const deltaTime = 1 / 60;
+    let accTime = 0;
+    let lastTime = 0;
+
+    function update(time = 0) {
+        accTime += (time - lastTime) / 1000;
+        while(accTime > deltaTime) {
+            draw.clear("black");    
+
+            // == Draws and updates go here
+            
+            accTime -= deltaTime;
         }
 
-        requestAnimationFrame(update);
+        lastTime = time;
+        requestAnimationFrame(update);  
     };
 
     update(0);
