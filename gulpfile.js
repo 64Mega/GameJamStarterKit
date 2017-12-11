@@ -19,6 +19,8 @@ const ch_error  = chalk.bold.red;
 const ch_ok     = chalk.bold.green;
 const ch_normal = chalk.white;
 
+let is_debug_build = true;
+
 // Beep on webpack error
 // Disable by flipping the bool below to false
 let do_beeps = true;
@@ -62,8 +64,10 @@ gulp.task('build-js', (done) => {
     return gulp.src('./src/js/main.js')
         .pipe(webpack({
             output: {
-                filename: 'game.js'
-            }
+                filename: 'game.js',
+                
+            },
+            devtool: 'source-map'
         }))
         .on('error', (err) => {
             ch_error(err);
