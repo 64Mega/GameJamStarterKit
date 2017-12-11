@@ -42,6 +42,7 @@ Assets.onfinished = () => {
         }
 
         lastTime = time;
+        
         requestAnimationFrame(update);  
     };
 
