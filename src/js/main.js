@@ -14,9 +14,6 @@ import {Vec2, DistanceCheck, CollisionBox, Box, CollideAgainst} from "./helpers/
 import {Interpolate} from "./helpers/math";
 import "./loadassets";
 
-// Game imports
-import Player from "./player";
-
 Global.canvas = new Canvas(800,600,"2d");
 Global.camera = new Vec2(0, 0);
 
@@ -31,28 +28,30 @@ Input.init();
 
 // Wait for assets to finish loading then start doing initialization that relies on resources
 Assets.onfinished = () => {
-    const deltaTime = 1 / 60;
+    const deltaTime = 1000 / 60;
     let accTime = 0;
     let lastTime = 0;
-   
-    // Game object initialization
-    let player = new Player(100, 50);
+
+    let text = new Text("spr_font1", 5, 8);
+    let x = 123;
+    let y = 150;
+    let c = 0.0;
 
     function update(time = 0) {
-        accTime += (time - lastTime) / 1000;
-        while(accTime > deltaTime) {
-            draw.clear("black");    
-
-            draw.sprite("bg_cave", 0, 0);
-
-            // == Draws and updates go here
-            player.render(Global.camera);
-
-            // Updates
-            player.update(deltaTime);
+        accTime += (time - lastTime);
+        while(accTime >= deltaTime) {
+            // Updates go here
+            c += 0.04;
+            
+            x = 123 + (Math.sin(c *  0.5) * 123);
+            y = 150 + (Math.sin(c) * 32);
+            draw.clear("rgba(0, 0, 0, 0.5)");    
 
             accTime -= deltaTime;
         }
+
+        // == Drawing code goes here
+        text.draw(x, y, "64Mega's GameJamStarterKit v3.0");
 
         lastTime = time;
         

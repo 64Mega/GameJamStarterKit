@@ -32,18 +32,3 @@ export function collision_with_ground_at(x, y, callback) {
     }
 }
 
-COL_Ground.push({
-    box: new Box(0, 130, 192, 256)
-});
-
-COL_Ground.push({
-    box: new Box(192, 160, 256, 256)
-});
-
-COL_Ground.push({
-    box: new Box(32, 32, 48, 48)
-});
-
-COL_Ground.push({
-    box: new Box(240, 130, 64, 64)
-})
