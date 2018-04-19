@@ -21,6 +21,8 @@ To run your game in the browser, run `npm start` in the root project directory.
 ## Building the final game
 Run `gulp build` in the root directory to output a zip containing an index.html, bundle.js and the assets you included in your game.
 
-## Notes
-This boilerplate currently relies on Gulp 4, and the dependency is pulled from Github. This may break in the future, so beware.
+## Changes in version 0.0.3
+ - Separated updates from render
+ - Corrected some issues with timing
+
 

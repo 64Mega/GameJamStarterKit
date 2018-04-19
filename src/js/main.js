@@ -43,15 +43,15 @@ Assets.onfinished = () => {
             // Updates go here
             c += 0.04;
             
-            x = 123 + (Math.sin(c *  0.5) * 123);
-            y = 150 + (Math.sin(c) * 32);
-            draw.clear("rgba(0, 0, 0, 0.5)");    
+            x = 118 + (Math.sin(c *  0.5) * 118);
+            y = 150 + (Math.sin(c) * 32);                    
 
             accTime -= deltaTime;
         }
 
         // == Drawing code goes here
-        text.draw(x, y, "64Mega's GameJamStarterKit v3.0");
+        draw.clear("rgba(0, 0, 0, 0.5)");    
+        text.draw(x, y, "64Mega's GameJamStarterKit v0.0.3");
 
         lastTime = time;
         
