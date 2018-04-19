@@ -8,7 +8,9 @@ function keydown_handler(key_event) {
         keys[key_event.keyCode] = 0;
     }
     if(keys[key_event.keyCode] === 0) {keys[key_event.keyCode] = 1};
-    if(key_event.keyCode !== Input.KEYS.F11 && key_event.keyCode !== Input.KEYS.F5) {
+    if(key_event.keyCode !== Input.KEYS.F11 
+        && key_event.keyCode !== Input.KEYS.F5
+        && key_event.keyCode !== Input.KEYS.F12) {
         key_event.preventDefault();
     }
 }

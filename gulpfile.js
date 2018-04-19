@@ -19,6 +19,14 @@ const ch_error  = chalk.bold.red;
 const ch_ok     = chalk.bold.green;
 const ch_normal = chalk.white;
 
+let webpack_config = {
+    output: {
+        filename: 'game.js',
+        
+    },
+    devtool: 'source-map'
+};
+
 // Beep on webpack error
 // Disable by flipping the bool below to false
 let do_beeps = true;
@@ -60,11 +68,7 @@ gulp.task('reload', (done) => {
 // Runs Webpack on JS source files
 gulp.task('build-js', (done) => {
     return gulp.src('./src/js/main.js')
-        .pipe(webpack({
-            output: {
-                filename: 'game.js'
-            }
-        }))
+        .pipe(webpack(webpack_config))
         .on('error', (err) => {
             ch_error(err);
             error_beep();
@@ -107,7 +111,16 @@ gulp.task('check', gulp.series('zip', (done) => {
     done();
 }));
 
+gulp.task('pre-build', (done) => {
+    webpack_config = {
+        output: {
+            filename: 'game.js',   
+        }
+    };
+    done();
+})
+
 // Manual build task
-gulp.task('build', gulp.series('build-html', 'build-css', 'build-js', 'build-assets', 'zip', 'check', (done) => {
+gulp.task('build', gulp.series('pre-build','build-html', 'build-css', 'build-js', 'build-assets', 'zip', 'check', (done) => {
     done();
 }));
