@@ -34,13 +34,16 @@ class Sprite {
             return;
         }
 
+        let tx = -Global.camera.x;
+        let ty = -Global.camera.y;
+
         let frame = (Math.floor(this.curframe)%this.numframes);
         let fx = frame * this.width;
         let fy = 0;
         if(flipped === false) {
-            Global.canvas.context.drawImage(this.sprite,fx, fy, this.width, this.height, x, y, this.width, this.height);
+            Global.canvas.context.drawImage(this.sprite,fx, fy, this.width, this.height, x+tx, y+ty, this.width, this.height);
         } else {
-            Global.canvas.context.drawImage(this.sprite.flipped, this.image_width-fx-this.width, fy, this.width, this.height, x, y, this.width, this.height);
+            Global.canvas.context.drawImage(this.sprite.flipped, this.image_width-fx-this.width, fy, this.width, this.height, x+tx, y+ty, this.width, this.height);
         }
 
         this.curframe += this.speed;

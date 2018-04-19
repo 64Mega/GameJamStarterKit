@@ -101,15 +101,56 @@ export class Box {
         this.w = w;
         this.h = h;
     }
+
+    floor() {
+        return {
+            x: Math.floor(this.x),
+            y: Math.floor(this.y),
+            w: Math.floor(this.w),
+            h: Math.floor(this.h),
+        }
+    }
 }
 
 export function CollisionBox(box1, box2) {
     return !(
-        box1.x + box1.w < box2.x ||
-        box1.x > box2.x + box2.w ||
-        box1.y + box1.h < box2.y ||
-        box1.y > box2.y + box2.h
+        box1.floor().x + box1.floor().w < box2.floor().x ||
+        box1.floor().x > box2.floor().x + box2.floor().w ||
+        box1.floor().y + box1.floor().h < box2.floor().y ||
+        box1.floor().y > box2.floor().y + box2.floor().h
     );
+}
+
+export function CollisionPointBox(x, y, box) {
+    return x >= box.x && x <= box.x + box.w && y >= box.y && y <= box.y + box.y;
+}
+
+export function MoveAgainstVert(box1, box2) {
+    let result = new Box(box1.x, box1.y, box1.w, box1.h);
+    if(CollisionBox(box1, box2)) {
+        let cb1 = new Vec2(box1.x + box1.w/2, box1.y + box1.h/2);
+        let cb2 = new Vec2(box2.x + box2.w/2, box2.y + box2.h/2);
+        if(cb1.y < cb2.y) {
+            result.y = box2.y - box1.h;
+        } else {
+            result.y = box2.y + box2.h;
+        }
+    }
+    return result;
+}
+
+export function MoveAgainstHorz(box1, box2) {
+    let result = new Box(box1.x, box1.y, box1.w, box1.h);
+    if(CollisionBox(box1, box2)) {
+        let cb1 = new Vec2(box1.x + box1.w/2, box1.y + box1.h/2);
+        let cb2 = new Vec2(box2.x + box2.w/2, box2.y + box2.h/2);
+        if(cb1.x < cb2.x) {
+            result.x = box2.x - box1.w;
+        } else {
+            result.x = box2.x + box2.w;
+        }
+    }
+    return result;
 }
 
 export function CollideAgainst(box1, box2, horizontal) {
@@ -170,6 +211,10 @@ export let Interpolate = {
 
     POWSTEP(t) {
         return t*t;
+    },
+
+    POW2STEP(t) {
+        return t*t*t
     },
 
     POWSTEPINV(t) {
